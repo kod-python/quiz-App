@@ -1,31 +1,85 @@
 const quizData = [
-
-{
-
-    question: "what is the capital of France?",
-
-    a:"London",
-    b:"Paris",
-    c:"Berlin",
-    d:"Rome",
-    correct: "b"
-},
-
-
-{
-
-    question: "what is the capital of France?",
-
-    a:"London",
-    b:"Paris",
-    c:"Berlin",
-    d:"Rome",
-    correct: "b"
-},
-
-
+    {
+        question: "What is the capital of France?",
+        a: "London",
+        b: "Paris",
+        c: "Berlin",
+        d: "Rome",
+        correct: "b",
+    },
+    {
+        question: "Who wrote 'To Kill a Mockingbird'?",
+        a: "Harper Lee",
+        b: "Mark Twain",
+        c: "J.K. Rowling",
+        d: "Stephen King",
+        correct: "a",
+    },
+    {
+        question: "Which planet is known as the Red Planet?",
+        a: "Earth",
+        b: "Mars",
+        c: "Venus",
+        d: "Jupiter",
+        correct: "b",
+    },
+    {
+        question: "Who painted the Mona Lisa?",
+        a: "Leonardo da Vinci",
+        b: "Pablo Picasso",
+        c: "Vincent van Gogh",
+        d: "Michelangelo",
+        correct: "a",
+    },
+    {
+        question: "What is the chemical symbol for water?",
+        a: "Wt",
+        b: "H2O",
+        c: "Co",
+        d: "Ho",
+        correct: "b",
+    },
+    {
+        question: "Who discovered penicillin?",
+        a: "Alexander Fleming",
+        b: "Marie Curie",
+        c: "Isaac Newton",
+        d: "Albert Einstein",
+        correct: "a",
+    },
+    {
+        question: "What is the largest mammal in the world?",
+        a: "Elephant",
+        b: "Blue Whale",
+        c: "Giraffe",
+        d: "Hippopotamus",
+        correct: "b",
+    },
+    {
+        question: "Who is known as the father of modern physics?",
+        a: "Isaac Newton",
+        b: "Albert Einstein",
+        c: "Galileo Galilei",
+        d: "Niels Bohr",
+        correct: "b",
+    },
+    {
+        question: "What is the smallest country in the world?",
+        a: "Monaco",
+        b: "Vatican City",
+        c: "San Marino",
+        d: "Nauru",
+        correct: "b",
+    },
+    {
+        question: "What is the currency of Japan?",
+        a: "Yuan",
+        b: "Euro",
+        c: "Dollar",
+        d: "Yen",
+        correct: "d",
+    },
 ];
-
 
 // create variables
 
@@ -60,11 +114,11 @@ let score = 0;
 
 function loadQuiz(){
 
-    deselectAnswers()
+    deselectAnswers();
 
-    const currenQuizData = quizData = [currenQuiz]
+    const currenQuizData = quizData[currenQuiz];
 
-    questionEl.innerText = currenQuizData.question
+    questionEl.innerText = currenQuizData.question;
 
 
  a_text.innerText = currenQuizData.a;
@@ -75,7 +129,7 @@ function loadQuiz(){
 
 }
 
-
+loadQuiz();
 
 function deselectAnswers(){
 
@@ -95,3 +149,26 @@ function getSelected() {
 
     return answer
 }
+
+
+submitBtn.addEventListener("click", () => {
+ const answer = getSelected()
+
+ if(answer){
+    if (answer == quiz[currenQuiz].correct){
+        score++
+    }
+    
+    currenQuiz++
+
+    if(currenQuiz < quizData.length){
+        loadQuiz
+    }
+
+    else{
+        quiz.innerHTML = `<h2>you answered ${score} / ${quizData.length} questions correctly</h2>
+        <button onclick = "location.reload()">Reload</button>`
+    }
+ }
+
+})
