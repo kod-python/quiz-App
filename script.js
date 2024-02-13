@@ -60,6 +60,27 @@ function getSelected() {
   return answer;
 }
 
+function showResults() {
+  let grade = '';
+
+  if (score === quizData.length) {
+    grade = 'Excellent';
+  } else if (score >= quizData.length / 2) {
+    grade = 'Good';
+  } else {
+    grade = 'Pass';
+  }
+
+  quiz.innerHTML = `<h2>You scored ${score} out of ${quizData.length}</h2><p>Grade: ${grade}</p>`;
+  submitBtn.style.display = 'none';
+  feedbackEl.innerText = ''; // Clear any previous feedback
+}
+
+
+
+
+
+
 // Event listener for submit button
 submitBtn.addEventListener("click", () => {
   const answer = getSelected(); // Get selected answer
