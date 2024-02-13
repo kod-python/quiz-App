@@ -87,7 +87,7 @@ const quizData = [
         // If the answer is wrong, prompt the user and provide the correct answer
         alert("Wrong answer! The correct answer is: " + quizData[currentQuiz].correct.toUpperCase());
       }
-  
+    }
       currentQuiz++;
   
       if (currentQuiz < quizData.length) {
@@ -102,10 +102,10 @@ const quizData = [
           remark = "Keep practicing! You'll get better!";
         }
   
-        quiz.innerHTML = <h2>You answered ${score} / ${quizData.length} questions correctly</h2>
+        quiz.innerHTML = `<h2>You answered ${score} / ${quizData.length} questions correctly`</h2>
         <button onclick="location.reload()">Reload</button>;
       } 
-    }else {
+    else {
       // Print an informational message when no answer is selected
       alert("Please select an answer before submitting.");
     }
